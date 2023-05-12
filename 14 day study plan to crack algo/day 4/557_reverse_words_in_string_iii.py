@@ -1,6 +1,13 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
-        words = s.split()
-        reversed_words = [word[::-1] for word in words]
-        new_sentence = ' '.join(reversed_words)
-        return new_sentence
+        result = ""
+        word = ""
+
+        for char in s:
+            if char == " ":
+                result += word[::-1] + " "
+                word = ""
+            else:
+                word += char
+        result += word[::-1]
+        return result

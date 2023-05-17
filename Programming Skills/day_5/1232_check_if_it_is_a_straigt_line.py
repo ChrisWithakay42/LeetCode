@@ -2,7 +2,7 @@ from typing import List
 
 
 class Solution:
-    def checkStraightLine(self, coordinates: Listt[List[int]]) -> bool:
+    def checkStraightLine(self, coordinates: List[List[int]]) -> bool:
         if len(coordinates) < 3:
             return True
 

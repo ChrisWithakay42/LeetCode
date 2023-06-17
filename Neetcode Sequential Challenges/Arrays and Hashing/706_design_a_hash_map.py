@@ -1,7 +1,11 @@
 class MyHashMap:
 
     def __init__(self):
-        ...
+        self.size = 1000
+        self.bucket_array = [None] * self.size
+
+    def _get_hash(self, key):
+        return key % self.size
 
     def put(self, key: int, value: int) -> None:
         ...

@@ -1,3 +1,10 @@
+class ListNode:
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+        self.next = None
+
+
 class MyHashMap:
 
     def __init__(self):
@@ -8,16 +15,22 @@ class MyHashMap:
         return key % self.size
 
     def put(self, key: int, value: int) -> None:
-        ...
+        hash_value = self._get_hash(key)
+        if self.bucket_array[hash_value] is None:
+            self.bucket_array[hash_value] = ListNode(key, value)
+        else:
+            curr = self.bucket_array[hash_value]
+            while True:
+                if curr.key == key:
+                    curr.value = value
+                    return
+                if curr.next is None:
+                    break
+                curr = curr.next
+            curr.next = ListNode(key, value)
 
     def get(self, key: int) -> int:
         ...
 
     def remove(self, key: int) -> None:
         ...
-
-# Your MyHashMap object will be instantiated and called as such:
-# obj = MyHashMap()
-# obj.put(key,value)
-# param_2 = obj.get(key)
-# obj.remove(key)

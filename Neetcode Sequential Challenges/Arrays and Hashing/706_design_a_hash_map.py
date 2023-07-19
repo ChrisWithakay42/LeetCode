@@ -30,7 +30,13 @@ class MyHashMap:
             curr.next = ListNode(key, value)
 
     def get(self, key: int) -> int:
-        ...
+        hash_value = self._get_hash(key)
+        curr = self.bucket_array[hash_value]
+        while curr:
+            if curr.key == key:
+                return curr.value
+            curr = curr.next
+        return -1
 
     def remove(self, key: int) -> None:
         ...

@@ -39,4 +39,16 @@ class MyHashMap:
         return -1
 
     def remove(self, key: int) -> None:
-        ...
+        hash_value = self._get_hash(key)
+        curr = prev = self.bucket_array[hash_value]
+        if not curr:
+            return
+        if curr.key == key:
+            self.bucket_array[hash_value] = curr.next
+        else:
+            curr = curr.next
+            while curr:
+                if curr.key == key:
+                    prev.next = curr.next
+                    return
+                curr, prev = curr.next, prev.next
